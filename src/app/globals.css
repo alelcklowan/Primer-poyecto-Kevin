@@ -225,3 +225,109 @@ h2{
 .input-error {
   border: 2px solid red;
 }
+
+@media (max-width: 640px){
+  @keyframes expandCard {
+  0% {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(1);
+  }
+   10% {
+    border-radius: 15px;
+   }
+   40% {
+    width: 300px;
+    height: 30px;
+    
+  }
+  100% {
+    width: 75vw;
+    height: 70vh; /* más espacio vertical */
+    border-radius: 15px;
+    background-color: white;
+    transform: translate(-50%, -59%) scale(1);
+  }
+}
+.loader{
+  max-width: 300px;
+}
+
+.login-card {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 500px;
+  opacity: 0;
+  animation: showCard 0.5s ease-in-out forwards 5.8s;
+  overflow: hidden;
+}
+
+.form-container {
+  display: flex;
+  width: 600px; /* 2 vistas lado a lado */
+  transition: transform 0.5s ease-in-out;
+}
+
+.form-container.login {
+  transform: translateX(0);
+}
+
+.form-container.register {
+  transform: translateX(-300px);
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center; /* centra horizontalmente */
+}
+
+.form input{
+  width: 88%;
+  margin-right: 50px;
+}
+.form button {
+  width: 70%; /* mantienen ancho */
+}
+
+@keyframes aparecer {
+  0% {
+    opacity: 0;
+    filter: blur(20px);
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate(-50%, -50%) scale(.8);
+  }
+}
+
+@keyframes desplazar {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    transform: translate(-50%, -100%) scale(.8);
+  }
+}
+
+/* Reubicación dentro de la card blanca */
+@keyframes moverDentro {
+  0% {
+    transform: translate(-50%, -100%) scale(.8);
+    color: white;
+  }
+  100% {
+    transform: translate(-50%, -310%) scale(.8);
+    color: black;
+    text-shadow: none; /* sombra ya no necesaria sobre blanco */
+  }
+}
+
+}
