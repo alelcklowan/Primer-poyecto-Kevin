@@ -1,0 +1,227 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+a{
+  text-decoration: none;
+  color: inherit;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* bloquea el scroll */
+}
+
+h2{
+  text-align: center;
+}
+
+.background {
+  background-image: url("/background.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+
+.title {
+  font-size: 4vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+}
+.title h1 {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  color: white;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+  opacity: 0;
+  filter: blur(20px);
+  animation: aparecer 2s ease forwards, desplazar 0.5s ease-in-out forwards 2s, moverDentro 0.5s ease forwards 5.1s;
+}
+
+/* Animación inicial: aparecer con blur y escala */
+@keyframes aparecer {
+  0% {
+    opacity: 0;
+    filter: blur(20px);
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Animación secundaria: mover hacia arriba (sincronizada con loader) */
+@keyframes desplazar {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    transform: translate(-50%, -100%) scale(1);
+  }
+}
+
+/* Reubicación dentro de la card blanca */
+@keyframes moverDentro {
+  0% {
+    transform: translate(-50%, -100%) scale(1);
+    color: white;
+  }
+  100% {
+    transform: translate(-50%, -310%) scale(1);
+    color: black;
+    text-shadow: none; /* sombra ya no necesaria sobre blanco */
+  }
+}
+
+.loader {
+  position: absolute;
+  top: 53%; /* más cerca del título */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  border: 4px solid rgba(255,255,255,0.3);
+  border-top: 4px solid white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: showLoader 2s forwards 2s, spin 2s linear 2s, fillWhite 0.2s ease-in-out forwards 3.5s, expandCard 0.7s ease-in-out forwards 4.7s;
+}
+
+/* Mostrar loader */
+@keyframes showLoader {
+  to { opacity: 1; }
+}
+
+/* Giro clásico */
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(1080deg); }
+}
+
+/* Relleno gradual */
+@keyframes fillWhite {
+  0% {
+    background-color: transparent;
+    border: 4px solid rgba(255,255,255,0.3);
+    border-top-color: white;
+  }
+  100% {
+    background-color: white;
+    border: 4px solid white;
+  }
+}
+
+@keyframes expandCard {
+  0% {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(1);
+  }
+   10% {
+    border-radius: 15px;
+   }
+   40% {
+    width: 400px;
+    height: 30px;
+    
+  }
+  100% {
+    width: 400px;
+    height: 500px; /* más espacio vertical */
+    border-radius: 15px;
+    background-color: white;
+    transform: translate(-50%, -59%) scale(1);
+  }
+}
+
+
+
+
+.login-card {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 500px;
+  opacity: 0;
+  animation: showCard 0.5s ease-in-out forwards 5.8s;
+  overflow: hidden;
+}
+
+@keyframes showCard { to { opacity: 1; } }
+
+/* Swipe animaciones */
+.form-container {
+  display: flex;
+  width: 800px; /* 2 vistas lado a lado */
+  transition: transform 0.5s ease-in-out;
+}
+
+.form-container.login {
+  transform: translateX(0);
+}
+
+.form-container.register {
+  transform: translateX(-400px);
+}
+
+.form {
+  width: 500px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form input {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 92%;
+}
+
+.form button {
+  padding: 0.8rem;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.form p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #0077cc;
+  cursor: pointer;
+  text-align: center;
+}
+.error {
+  text-align: center;
+  color: red;
+  font-size: 0.7rem;
+  
+}
+
+.input-error {
+  border: 2px solid red;
+}

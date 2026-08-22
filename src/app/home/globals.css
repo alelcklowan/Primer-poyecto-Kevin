@@ -1,0 +1,18 @@
+.home-main {
+  padding: 2rem;
+}
+
+.home-footer {
+  background: #f5f5f5;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+html, body{
+  overflow-y: scroll;
+}
+p{
+  text-align: center;
+  margin-bottom: 20px;
+}
