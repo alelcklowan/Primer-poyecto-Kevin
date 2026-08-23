@@ -13,6 +13,7 @@ export default function Page() {
   const [registerConfirmPassword, setRegisterConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [focus, setFocus] = useState({});
+  const [successMessage, setSuccessMessage] = useState("");
 
   // Validaciones
   const validateEmail = (email) => {
@@ -63,34 +64,53 @@ export default function Page() {
     }));
   };
 
-  // Login con useCallback
+  // Login
   const handleLogin = useCallback(() => {
     const email = document.getElementById("loginEmail").value;
     const password = document.getElementById("loginPassword").value;
 
-    const savedEmail = localStorage.getItem("userEmail");
-    const savedPassword = localStorage.getItem("userPassword");
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const foundUser = users.find((u) => u.email === email && u.password === password);
 
-    if (email === savedEmail && password === savedPassword) {
+    if (foundUser) {
       router.push("/home");
     } else {
       setErrors((prev) => ({ ...prev, login: "Correo o contraseña incorrectos" }));
     }
   }, [router]);
 
-  // Register con useCallback
+  // Register
   const handleRegister = useCallback(() => {
     const emailError = validateEmail(registerEmail);
     const passwordError = validatePassword(registerPassword);
     const confirmError = validateConfirmPassword(registerPassword, registerConfirmPassword);
 
     setErrors({ email: emailError, password: passwordError, confirmPassword: confirmError });
+    setSuccessMessage("");
 
     if (!emailError && !passwordError && !confirmError) {
-      localStorage.setItem("userEmail", registerEmail);
-      localStorage.setItem("userPassword", registerPassword);
-      alert("Usuario registrado correctamente");
-      setView("login");
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+
+      // Verificar duplicado
+      if (users.some((u) => u.email === registerEmail)) {
+        setErrors((prev) => ({ ...prev, email: "Este usuario ya ha sido registrado" }));
+        return;
+      }
+
+      // Guardar nuevo usuario
+      users.push({ email: registerEmail, password: registerPassword });
+      localStorage.setItem("users", JSON.stringify(users));
+
+      setSuccessMessage("Usuario registrado correctamente 🎉");
+      setRegisterEmail("");
+      setRegisterPassword("");
+      setRegisterConfirmPassword("");
+
+      // Volver al login después de unos segundos
+      setTimeout(() => {
+        setView("login");
+        setSuccessMessage("");
+      }, 2000);
     }
   }, [registerEmail, registerPassword, registerConfirmPassword]);
 
@@ -145,7 +165,7 @@ export default function Page() {
                 onBlur={() => setFocus((prev) => ({ ...prev, email: false }))}
                 className={errors.email ? "input-error" : ""}
               />
-              {focus.email && errors.email && <span className="error">{errors.email}</span>}
+              {errors.email && <span className="error">{errors.email}</span>}
             </div>
 
             <div className="form-group">
@@ -159,9 +179,7 @@ export default function Page() {
                 onBlur={() => setFocus((prev) => ({ ...prev, password: false }))}
                 className={errors.password ? "input-error" : ""}
               />
-              {focus.password && errors.password && (
-                <span className="error">{errors.password}</span>
-              )}
+              {errors.password && <span className="error">{errors.password}</span>}
             </div>
 
             <div className="form-group">
@@ -179,7 +197,7 @@ export default function Page() {
                 }
                 className={errors.confirmPassword ? "input-error" : ""}
               />
-              {focus.confirmPassword && errors.confirmPassword && (
+              {errors.confirmPassword && (
                 <span className="error">{errors.confirmPassword}</span>
               )}
             </div>
@@ -193,6 +211,16 @@ export default function Page() {
       <div className="title">
         <h1><strong>Bienvenido</strong></h1>
       </div>
+    
+          {successMessage && (
+        <div className="overlay">
+          <div className="success-card">
+            <h2>{successMessage}</h2>
+          </div>
+        </div>
+      )}
+
+
     </div>
   );
 }

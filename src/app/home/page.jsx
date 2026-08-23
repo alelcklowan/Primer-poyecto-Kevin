@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import styles from "./home.module.css";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -6,8 +7,21 @@ import { useState, useEffect } from "react";
 export default function HomePage() {
   const [view, setView] = useState("home");
   const [visibleBlocks, setVisibleBlocks] = useState([]);
+  const [darkMode, setDarkMode] = useState(false);
 
-  useEffect(() => {
+useEffect(() => {
+  // Sincroniza la clase 'dark' en <html> con el estado darkMode
+  if (typeof document !== "undefined") {
+    const root = document.documentElement;
+    if (darkMode) {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+  }
+}, [darkMode]);
+  
+useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -18,6 +32,8 @@ export default function HomePage() {
       },
       { threshold: 0.2 }
     );
+    
+
 
     document.querySelectorAll(`.${styles.block}`).forEach((block, i) => {
       block.dataset.id = i;
@@ -28,7 +44,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${darkMode ? styles.dark : ""}`}>
       {/* Sidebar fija */}
       <nav className={styles.sidebar}>
         <ul>
@@ -144,25 +160,73 @@ export default function HomePage() {
     <h1 className={styles.title}>Contáctanos</h1>
     <p>Aquí puedes ver nuestras opciones de contacto:</p>
 
-    {/* Cards con imágenes */}
-    <div className={styles.cards}>
-      <div className={styles.card}>
-        <img src="/image.png" alt="Card 1" className={styles.cardImage} />
-        <div className={styles.overlay}>Fulano de tal</div>
-      </div>
-      <div className={styles.card}>
-        <img src="/image.png" alt="Card 2" className={styles.cardImage} />
-        <div className={styles.overlay}>Mengano de tal</div>
-      </div>
-      <div className={styles.card}>
-        <img src="/image.png" alt="Card 3" className={styles.cardImage} />
-        <div className={styles.overlay}>Perencejo Perez</div>
-      </div>
+    {/* Cards con imágenes usando next/image */}
+<div className={styles.cards}>
+  <div className={styles.card}>
+    <div className={styles.cardImageWrapper}>
+      <Image
+        src="/image.webp"
+        alt="Card 1"
+        fill
+        sizes="(max-width: 640px) 100vw, 300px"
+        className={styles.cardImage}
+      />
     </div>
+    <div className={styles.overlay}>Fulano de tal</div>
+  </div>
+
+  <div className={styles.card}>
+    <div className={styles.cardImageWrapper}>
+      <Image
+        src="/image.webp"
+        alt="Card 2"
+        fill
+        sizes="(max-width: 640px) 100vw, 300px"
+        className={styles.cardImage}
+      />
+    </div>
+    <div className={styles.overlay}>Mengano de tal</div>
+  </div>
+
+  <div className={styles.card}>
+    <div className={styles.cardImageWrapper}>
+      <Image
+        src="/image.webp"
+        alt="Card 3"
+        fill
+        sizes="(max-width: 640px) 100vw, 300px"
+        className={styles.cardImage}
+      />
+    </div>
+    <div className={styles.overlay}>Perencejo Perez</div>
+  </div>
+</div>
+
   </section>
 )}
 
       </main>
+      {/* Botón flotante modo oscuro */}
+<button 
+  className={styles.darkModeToggle} 
+  onClick={() => setDarkMode(!darkMode)}
+>
+  {darkMode ? (
+    /* SVG Luna */
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+      className="bi bi-moon-fill" viewBox="0 0 16 16">
+      <path d="M6 .278a.77.7z7 0 0 1 .08.858..."/><path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278"/>
+    </svg>
+  ) : (
+    /* SVG Sol */
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+      className="bi bi-brightness-high" viewBox="0 0 16 16">
+        <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+
+    </svg>
+  )}
+</button>
+
     </div>
   );
 }

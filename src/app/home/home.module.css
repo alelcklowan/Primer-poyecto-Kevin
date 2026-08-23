@@ -1,7 +1,30 @@
+
 .container {
   display: flex;
   min-height: 100vh;
+  background: var(--bg-page); /* usa la variable global que definimos en globals.css */
+  min-height: 100vh;
 }
+
+/* ✅ Modo oscuro */
+.dark {
+  background-color: #222;
+  color: #f1f1f1;
+}
+.dark .sidebar {
+  background: #111;
+  color: #f1f1f1;
+}
+.dark .main {
+  background-color: #222;
+}
+.dark .card {
+  border: 1px solid #333;
+}
+.dark .overlay {
+  background: rgba(0, 0, 0, 0.6);
+}
+
 
 /* Sidebar fija a la izquierda */
 .sidebar {
@@ -58,13 +81,19 @@
 /* Header en móviles */
 @media (max-width: 640px) {
   .sidebar {
-    width: 100%;
-    height: 60px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    transition: none;
-  }
+  width: 70px;
+  background: #111;
+  color: white;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 20;
+  border-right: none;        /* elimina borde si existiera */
+  box-shadow: none;          /* elimina sombra que genere franja */
+}
   .sidebar:hover {
     width: 100%;
   }
@@ -82,12 +111,13 @@
 
 /* Main */
 .main {
-  flex: 1;
+   flex: 1;
   padding: 2rem;
-  margin-left: 70px;
+  margin-left: 70px; /* conserva comportamiento del sidebar */
   overflow-y: auto;
   transition: margin-left 0.3s ease;
   height: 100vh;
+  background: transparent; /* IMPORTANTE: evita franja lateral distinta */
 }
 
 @media (min-width: 641px) {
@@ -195,12 +225,11 @@
   /* Main: quitar margin-left, añadir padding-top para no quedar debajo del topbar */
   .main {
     margin-left: 0 !important;
-    padding-top: calc(60px + 1rem); /* espacio para la topbar + separación */
-    padding-left: 1rem;
-    padding-right: 1rem;
-    box-sizing: border-box;
-    height: calc(100vh - 60px);
+    padding-top: calc(60px + 1rem); /* espacio para topbar */
+    height: calc(100vh - 60px); /* <-- clave: ocupa el alto restante en móvil */
+    min-height: calc(100vh - 60px);
     overflow-y: auto;
+    background: transparent;
   }
 
   /* Desactivar cualquier translate/transform aplicado en desktop */
@@ -305,3 +334,55 @@
 .pink { background: deeppink; }
 .brown { background: saddlebrown; }
 .gray { background: dimgray; }
+
+/* ✅ Botón flotante modo oscuro */
+.darkModeToggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #444;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 12px;
+  cursor: pointer;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+.darkModeToggle:hover {
+  background: #666;
+}
+
+.container { background: #fff; }
+.dark { background: #121212; color: #f1f1f1; }
+
+/* Ocultar scrollbar visualmente en .main (WebKit, Blink) */
+.main::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+.main {
+ flex: 1;
+  padding: 2rem;
+  margin-left: 70px; /* conserva comportamiento desktop */
+  overflow-y: auto;
+  transition: margin-left 0.3s ease;
+  min-height: 100vh; /* asegura que cubra todo el alto en desktop */
+  background: transparent; /* evita franja con fondo distinto */
+}
+
+.cardImageWrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Ajuste para next/image cuando se usa fill */
+.cardImage {
+  object-fit: cover;
+  object-position: center;
+}
