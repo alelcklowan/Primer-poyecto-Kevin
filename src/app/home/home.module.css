@@ -112,7 +112,7 @@
 /* Main */
 .main {
    flex: 1;
-  padding: 2rem;
+  padding-bottom: 2rem;
   margin-left: 70px; /* conserva comportamiento del sidebar */
   overflow-y: auto;
   transition: margin-left 0.3s ease;
@@ -366,7 +366,8 @@
 }
 .main {
  flex: 1;
-  padding: 2rem;
+  padding-bottom: 2rem;
+  padding-top: 100px;
   margin-left: 70px; /* conserva comportamiento desktop */
   overflow-y: auto;
   transition: margin-left 0.3s ease;

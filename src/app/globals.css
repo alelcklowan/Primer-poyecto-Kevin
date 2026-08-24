@@ -84,7 +84,7 @@ h2{
     color: white;
   }
   100% {
-    transform: translate(-50%, -310%) scale(1);
+    transform: translate(-50%, -300%) scale(1);
     color: black;
     text-shadow: none; /* sombra ya no necesaria sobre blanco */
   }
@@ -148,7 +148,7 @@ h2{
     height: 500px; /* más espacio vertical */
     border-radius: 15px;
     background-color: white;
-    transform: translate(-50%, -59%) scale(1);
+    transform: translate(-50%, -55%) scale(1);
   }
 }
 
@@ -246,11 +246,12 @@ h2{
     height: 75vh; /* más espacio vertical */
     border-radius: 15px;
     background-color: white;
-    transform: translate(-50%, -54%) scale(1);
+    transform: translate(-50%, -53%) scale(1);
   }
 }
 .loader{
   max-width: 300px;
+  max-height: 75vh;
 }
 
 .login-card {
@@ -258,7 +259,8 @@ h2{
   top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 300px;
+  width: 75vw;
+  max-width: 300px;
   height: 500px;
   opacity: 0;
   animation: showCard 0.5s ease-in-out forwards 5.8s;
@@ -267,7 +269,8 @@ h2{
 
 .form-container {
   display: flex;
-  width: 600px; /* 2 vistas lado a lado */
+  width: 150vw;
+  max-width: 600px; /* 2 vistas lado a lado */
   transition: transform 0.5s ease-in-out;
 }
 
@@ -276,7 +279,7 @@ h2{
 }
 
 .form-container.register {
-  transform: translateX(-300px);
+  transform: translateX(clamp(-300px, -75vw, -75vw));
 }
 
 .form {
@@ -303,27 +306,27 @@ h2{
   100% {
     opacity: 1;
     filter: blur(0);
-    transform: translate(-50%, -50%) scale(.8);
+    transform: translate(-50%, -50%) scale(calc(min(0.8, 70vw / 300px)));
   }
 }
 
 @keyframes desplazar {
   0% {
-    transform: translate(-50%, -50%) scale(.8);
+    transform: translate(-50%, -50%) scale(calc(min(0.8, 70vw / 300px)));
   }
   100% {
-    transform: translate(-50%, -100%) scale(.8);
+    transform: translate(-50%, -100%) scale(calc(min(0.8, 70vw / 300px)));
   }
 }
 
 /* Reubicación dentro de la card blanca */
 @keyframes moverDentro {
   0% {
-    transform: translate(-50%, -100%) scale(.8);
+    transform: translate(-50%, -100%) scale(calc(min(0.8, 70vw / 300px)));
     color: white;
   }
   100% {
-    transform: translate(-50%, -310%) scale(.8);
+    transform: translate(-50%, -310%) scale(calc(min(0.8, 70vw / 300px)));
     color: black;
     text-shadow: none; /* sombra ya no necesaria sobre blanco */
   }
