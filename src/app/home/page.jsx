@@ -1,4 +1,5 @@
 "use client";
+import PokemonComponent from "./components/PokemonComponent";
 import Image from "next/image";
 import styles from "./home.module.css";
 import Link from "next/link";
@@ -94,6 +95,20 @@ useEffect(() => {
             </span>
             <span className={styles.label}>Contact</span>
           </li>
+          
+            <li onClick={() => setView("pokemon")}>
+              <span className={styles.icon}>
+                {/* SVG Pokédex */}
+               <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-pokeball" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <circle cx="9" cy="9" r="9" transform="translate(3 3)"/>
+                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M3 12h6m6 0h6"/>
+                </svg>
+
+              </span>
+              <span className={styles.label}>Pokédex</span>
+            </li>
 
           <li>
             <Link href="/">
@@ -204,6 +219,9 @@ useEffect(() => {
 
   </section>
 )}
+
+      {view === "pokemon" && <PokemonComponent darkMode={darkMode} />}
+
 
       </main>
       {/* Botón flotante modo oscuro */}
