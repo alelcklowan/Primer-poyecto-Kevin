@@ -101,7 +101,7 @@ export default function Page() {
       users.push({ email: registerEmail, password: registerPassword });
       localStorage.setItem("users", JSON.stringify(users));
 
-      setSuccessMessage("Usuario registrado correctamente 🎉");
+      setSuccessMessage("Usuario registrado correctamente");
       setRegisterEmail("");
       setRegisterPassword("");
       setRegisterConfirmPassword("");

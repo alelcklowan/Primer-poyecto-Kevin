@@ -113,11 +113,10 @@ export default function PokemonComponent({ darkMode }) {
                   <Image
             src="/logo.png"
             alt="Logo Pokédex"
-            width={36}
-            height={36}
+           height={1000}
+           width={1000}
             className={styles.logoImg}
           />
-          <h2 className={styles.title}>Pokédex</h2>
         </div>
 
         <nav className={styles.navList} aria-label="Filtros por tipo">
