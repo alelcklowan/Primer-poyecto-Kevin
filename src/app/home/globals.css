@@ -65,7 +65,8 @@ html::-webkit-scrollbar, body::-webkit-scrollbar, .main::-webkit-scrollbar {
   background: var(--bg-footer);
   color: var(--text-footer);
   text-align: center;
-  margin-top: 10px; /* o mantenlo si lo necesitas */
+  padding: 1rem;
+  margin-top: 0; /* o mantenlo si lo necesitas */
 }
 
 
