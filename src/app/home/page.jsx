@@ -46,12 +46,12 @@ useEffect(() => {
 
   return (
     <div className={`${styles.container} ${darkMode ? styles.dark : ""}`}>
-      {/* Sidebar fija */}
+      {/* sidebar */}
       <nav className={styles.sidebar}>
         <ul>
           <li onClick={() => setView("home")}>
             <span className={styles.icon}>
-              {/* SVG Home */}
+              {/* svg home */}
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                 className="bi bi-house" viewBox="0 0 16 16">
                 <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 
@@ -71,7 +71,7 @@ useEffect(() => {
 
           <li onClick={() => setView("contact")}>
             <span className={styles.icon}>
-              {/* SVG Contact */}
+              {/* svg contacto */}
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                 className="bi bi-people" viewBox="0 0 16 16">
                 <path d="M15 14s1 0 1-1-1-4-5-4-5 
@@ -98,7 +98,7 @@ useEffect(() => {
           
             <li onClick={() => setView("pokemon")}>
               <span className={styles.icon}>
-                {/* SVG Pokédex */}
+                {/* svg pokedex */}
                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-pokeball" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                   <circle cx="9" cy="9" r="9" transform="translate(3 3)"/>
@@ -113,7 +113,7 @@ useEffect(() => {
           <li>
             <Link href="/">
               <span className={styles.icon}>
-                {/* SVG Logout */}
+                {/* svg log out */}
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                   className="bi bi-door-closed" viewBox="0 0 16 16">
                   <path d="M3 2a1 1 0 0 1 1-1h8a1 
@@ -130,42 +130,42 @@ useEffect(() => {
         </ul>
       </nav>
 
-      {/* Contenido principal */}
+      {/* main*/}
       <main className={styles.main}>
         {view === "home" && (
           <section className={`${styles.homeSection} ${styles.fadeIn}`}>
             <h1 className={styles.title}>Home</h1>
 
-            {/* Bloques animados */}
+            {/* bloques colores animados*/}
             <div className={styles.blocks}>
-  <div className={`${styles.block} ${styles.red} ${visibleBlocks.includes("0") ? styles.visible : ""}`}>
-    Bloque rojo
-  </div>
-  <div className={`${styles.block} ${styles.blue} ${visibleBlocks.includes("1") ? styles.visible : ""}`}>
-    Bloque azul
-  </div>
-  <div className={`${styles.block} ${styles.green} ${visibleBlocks.includes("2") ? styles.visible : ""}`}>
-    Bloque verde
-  </div>
-  <div className={`${styles.block} ${styles.orange} ${visibleBlocks.includes("3") ? styles.visible : ""}`}>
-    Bloque naranja
-  </div>
-  <div className={`${styles.block} ${styles.purple} ${visibleBlocks.includes("4") ? styles.visible : ""}`}>
-    Bloque púrpura
-  </div>
-  <div className={`${styles.block} ${styles.teal} ${visibleBlocks.includes("5") ? styles.visible : ""}`}>
-    Bloque teal
-  </div>
-  <div className={`${styles.block} ${styles.pink} ${visibleBlocks.includes("6") ? styles.visible : ""}`}>
-    Bloque rosa
-  </div>
-  <div className={`${styles.block} ${styles.brown} ${visibleBlocks.includes("7") ? styles.visible : ""}`}>
-    Bloque marrón
-  </div>
-  <div className={`${styles.block} ${styles.gray} ${visibleBlocks.includes("8") ? styles.visible : ""}`}>
-    Bloque gris
-  </div>
-</div>
+              <div className={`${styles.block} ${styles.red} ${visibleBlocks.includes("0") ? styles.visible : ""}`}>
+                Bloque rojo
+              </div>
+              <div className={`${styles.block} ${styles.blue} ${visibleBlocks.includes("1") ? styles.visible : ""}`}>
+                Bloque azul
+              </div>
+              <div className={`${styles.block} ${styles.green} ${visibleBlocks.includes("2") ? styles.visible : ""}`}>
+                Bloque verde
+              </div>
+              <div className={`${styles.block} ${styles.orange} ${visibleBlocks.includes("3") ? styles.visible : ""}`}>
+                Bloque naranja
+              </div>
+              <div className={`${styles.block} ${styles.purple} ${visibleBlocks.includes("4") ? styles.visible : ""}`}>
+                Bloque púrpura
+              </div>
+              <div className={`${styles.block} ${styles.teal} ${visibleBlocks.includes("5") ? styles.visible : ""}`}>
+                Bloque teal
+              </div>
+              <div className={`${styles.block} ${styles.pink} ${visibleBlocks.includes("6") ? styles.visible : ""}`}>
+                Bloque rosa
+              </div>
+              <div className={`${styles.block} ${styles.brown} ${visibleBlocks.includes("7") ? styles.visible : ""}`}>
+                Bloque marrón
+              </div>
+              <div className={`${styles.block} ${styles.gray} ${visibleBlocks.includes("8") ? styles.visible : ""}`}>
+                Bloque gris
+              </div>
+            </div>
 
           </section>
         )}
@@ -175,7 +175,7 @@ useEffect(() => {
     <h1 className={styles.title}>Contáctanos</h1>
     <p>Aquí puedes ver nuestras opciones de contacto:</p>
 
-    {/* Cards con imágenes usando next/image */}
+    {/* cards imagenes */}
 <div className={styles.cards}>
   <div className={styles.card}>
     <div className={styles.cardImageWrapper}>
@@ -224,19 +224,19 @@ useEffect(() => {
 
 
       </main>
-      {/* Botón flotante modo oscuro */}
+      {/* boton dark mode toggle */}
 <button 
   className={styles.darkModeToggle} 
   onClick={() => setDarkMode(!darkMode)}
 >
   {darkMode ? (
-    /* SVG Luna */
+    /* svg luna */
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
       className="bi bi-moon-fill" viewBox="0 0 16 16">
       <path d="M6 .278a.77.7z7 0 0 1 .08.858..."/><path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278"/>
     </svg>
   ) : (
-    /* SVG Sol */
+    /* svg sol */
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
       className="bi bi-brightness-high" viewBox="0 0 16 16">
         <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>

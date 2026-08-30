@@ -11,7 +11,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden; /* bloquea el scroll */
+  overflow: hidden; 
 }
 
 h2{
@@ -53,7 +53,7 @@ h2{
   animation: aparecer 2s ease forwards, desplazar 0.5s ease-in-out forwards 2s, moverDentro 0.5s ease forwards 5.1s;
 }
 
-/* Animación inicial: aparecer con blur y escala */
+/* bienvenido aparecer*/
 @keyframes aparecer {
   0% {
     opacity: 0;
@@ -67,7 +67,7 @@ h2{
   }
 }
 
-/* Animación secundaria: mover hacia arriba (sincronizada con loader) */
+/* bienvenido subir 1 */
 @keyframes desplazar {
   0% {
     transform: translate(-50%, -50%) scale(1);
@@ -77,7 +77,7 @@ h2{
   }
 }
 
-/* Reubicación dentro de la card blanca */
+/* subir 2*/
 @keyframes moverDentro {
   0% {
     transform: translate(-50%, -100%) scale(1);
@@ -86,13 +86,13 @@ h2{
   100% {
     transform: translate(-50%, -300%) scale(1);
     color: black;
-    text-shadow: none; /* sombra ya no necesaria sobre blanco */
+    text-shadow: none; 
   }
 }
 
 .loader {
   position: absolute;
-  top: 53%; /* más cerca del título */
+  top: 53%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 30px;
@@ -104,18 +104,15 @@ h2{
   animation: showLoader 2s forwards 2s, spin 2s linear 2s, fillWhite 0.2s ease-in-out forwards 3.5s, expandCard 0.7s ease-in-out forwards 4.7s;
 }
 
-/* Mostrar loader */
 @keyframes showLoader {
   to { opacity: 1; }
 }
 
-/* Giro clásico */
 @keyframes spin {
   0% { transform: translate(-50%, -50%) rotate(0deg); }
   100% { transform: translate(-50%, -50%) rotate(1080deg); }
 }
 
-/* Relleno gradual */
 @keyframes fillWhite {
   0% {
     background-color: transparent;
@@ -145,7 +142,7 @@ h2{
   }
   100% {
     width: 400px;
-    height: 500px; /* más espacio vertical */
+    height: 500px;
     border-radius: 15px;
     background-color: white;
     transform: translate(-50%, -55%) scale(1);
@@ -169,10 +166,10 @@ h2{
 
 @keyframes showCard { to { opacity: 1; } }
 
-/* Swipe animaciones */
+/* swipe login register */
 .form-container {
   display: flex;
-  width: 800px; /* 2 vistas lado a lado */
+  width: 800px; 
   transition: transform 0.5s ease-in-out;
 }
 
@@ -243,7 +240,7 @@ h2{
   }
   100% {
     width: 75vw;
-    height: 75vh; /* más espacio vertical */
+    height: 75vh; 
     border-radius: 15px;
     background-color: white;
     transform: translate(-50%, -53%) scale(1);
@@ -270,7 +267,7 @@ h2{
 .form-container {
   display: flex;
   width: 150vw;
-  max-width: 600px; /* 2 vistas lado a lado */
+  max-width: 600px; 
   transition: transform 0.5s ease-in-out;
 }
 
@@ -286,7 +283,7 @@ h2{
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center; /* centra horizontalmente */
+  align-items: center;
 }
 
 .form input{
@@ -294,7 +291,7 @@ h2{
   margin-right: 50px;
 }
 .form button {
-  width: 70%; /* mantienen ancho */
+  width: 70%;
 }
 
 @keyframes aparecer {
@@ -319,7 +316,6 @@ h2{
   }
 }
 
-/* Reubicación dentro de la card blanca */
 @keyframes moverDentro {
   0% {
     transform: translate(-50%, -100%) scale(calc(min(0.8, 70vw / 300px)));
@@ -328,7 +324,7 @@ h2{
   100% {
     transform: translate(-50%, -310%) scale(calc(min(0.8, 70vw / 300px)));
     color: black;
-    text-shadow: none; /* sombra ya no necesaria sobre blanco */
+    text-shadow: none;
   }
 }
 
@@ -340,11 +336,11 @@ h2{
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0,0,0,0.5); /* fondo semitransparente */
+  background: rgba(0,0,0,0.5); 
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999; /* encima de todo */
+  z-index: 999;
   animation: fadeOverlay 2s ease forwards;
 }
 
@@ -363,7 +359,7 @@ h2{
   font-weight: bold;
 }
 
-/* Animación de entrada y salida */
+/* in and out */
 @keyframes fadeOverlay {
   0% { opacity: 0; }
   20% { opacity: 1; }
@@ -376,4 +372,27 @@ h2{
   20% { opacity: 1; transform: scale(1); }
   80% { opacity: 1; transform: scale(1); }
   100% { opacity: 0; transform: scale(0.8); }
+}
+.password-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-group input {
+  flex: 1;
+  padding-right: 2rem;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
 }

@@ -1,8 +1,4 @@
-/* components/Pokemon.module.css */
-/* Fuente: Rubik */
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
-
-/* Variables por defecto (modo claro) */
 :root {
   --pokemon-card-bg: #ffffff;
   --pokemon-card-shadow: 0 0 3rem -1rem rgba(0,0,0,0.12);
@@ -34,7 +30,6 @@
 
 }
 
-/* ✅ Modo oscuro: igual que en home.module.css */
 .dark {
   --pokemon-card-bg: #222;
   --pokemon-card-shadow: 0 6px 30px rgba(0,0,0,0.35);
@@ -46,14 +41,12 @@
   --input-border: rgba(255,255,255,0.06);
 }
 
-/* Contenedor principal */
 .pokemonView {
   padding: 2rem;
   background: transparent;
   color: var(--pokemon-text);
 }
 
-/* Toolbar */
 .toolbar {
   display: flex;
   flex-direction: column;
@@ -78,7 +71,6 @@
   color: var(--pokemon-text);
 }
 
-/* Botones tipo */
 .navList {
   display: flex;
   align-items: center;
@@ -99,7 +91,6 @@
 }
 .btnHeader:hover { transform: scale(1.03); box-shadow: 0 0 1.5rem rgba(0,0,0,.12); }
 
-/* Buscador */
 .buscador { display: flex; justify-content: center; margin-bottom: 1.25rem; }
 .buscadorInput {
   width: 100%;
@@ -114,7 +105,6 @@
 }
 .buscadorInput:focus { outline: none; border-color: var(--pokemon-accent); }
 
-/* Grid de tarjetas */
 .pokemonTodos {
   display: grid;
   grid-template-columns: 1fr;
@@ -123,7 +113,6 @@
 @media (min-width: 490px) { .pokemonTodos { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 700px) { .pokemonTodos { grid-template-columns: 1fr 1fr 1fr; } }
 
-/* Tarjeta */
 .pokemon {
   border-radius: 1rem;
   background-color: var(--pokemon-card-bg);
@@ -136,7 +125,6 @@
   color: var(--pokemon-text);
 }
 
-/* Id grande de fondo */
 .pokemonIdBack {
   position:absolute;
   top: 1rem;
@@ -149,7 +137,6 @@
 }
 .dark .pokemonIdBack { color: rgba(255,255,255,0.05); }
 
-/* Imagen */
 .pokemonImagen {
   padding-inline: 1rem;
   display: flex;
@@ -158,7 +145,6 @@
 }
 .pokeImg { width: 150%; max-width: 10rem; object-fit: contain; height: 150%; max-height: 10rem; object-fit: contain;}
 
-/* Info */
 .pokemonInfo {
   display: flex;
   flex-direction: column;
@@ -188,7 +174,6 @@
 
 .pokemonNombre { font-size: 1.4rem; text-transform: capitalize; margin: 0; color: var(--pokemon-text); }
 
-/* Tipos */
 .pokemonTipos {
   display: flex;
   gap: .5rem;
@@ -205,7 +190,6 @@
   color: var(--clr-black);
 }
 
-/* Stats */
 .pokemonStats { display: flex; gap: 1rem; font-size: .85rem; }
 .stat {
   background-color: rgba(0,0,0,0.06);
@@ -215,7 +199,6 @@
 }
 .dark .stat { background-color: rgba(255,255,255,0.04); }
 
-/* Paginación */
 .paginacion {
   display: flex;
   justify-content: center;
@@ -244,7 +227,6 @@
 }
 .dark .contador { background-color: rgba(255,255,255,0.03); color: var(--pokemon-text); }
 
-/* Mensajes */
 .loadingText { color: var(--pokemon-muted); }
 .errorText { color: salmon; }
 

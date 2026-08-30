@@ -3,13 +3,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import styles from "./PokemonComponent.module.css";
 import Image from "next/image";
-
-/**
- * PokemonComponent (Next.js)
- * - Trae los primeros 151 pokémon
- * - Búsqueda, filtrado por tipo, paginación
- * - Recibe la prop darkMode para aplicar estilos oscuros
- */
 export default function PokemonComponent({ darkMode }) {
   const [todosLosPokemons, setTodosLosPokemons] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -107,7 +100,7 @@ export default function PokemonComponent({ darkMode }) {
 
   return (
     <div className={`${styles.pokemonView} ${darkMode ? styles.dark : ""}`}>
-      {/* Toolbar interna */}
+      {/* header migrado a toolbar */}
       <div className={styles.toolbar}>
         <div className={styles.pokemonLogo}>
                   <Image
@@ -141,7 +134,7 @@ export default function PokemonComponent({ darkMode }) {
         </nav>
       </div>
 
-      {/* Buscador */}
+      {/* barra busqueda */}
       <section className={styles.buscador}>
         <input
           type="text"
@@ -160,7 +153,7 @@ export default function PokemonComponent({ darkMode }) {
       {loading && <p className={styles.loadingText}>Cargando pokémon...</p>}
       {error && <p className={styles.errorText}>{error}</p>}
 
-      {/* Contenedor de Pokémon */}
+      {/* div de pokemons */}
       <div id="todos">
         <div className={styles.pokemonTodos} id="listaPokemon">
           {pokemonsPagina.map((poke) => {
@@ -208,7 +201,7 @@ export default function PokemonComponent({ darkMode }) {
         </div>
       </div>
 
-      {/* Paginación */}
+      {/* paginas */}
       <section className={styles.paginacion} aria-label="Paginación">
         <button
           id="btn-prev"

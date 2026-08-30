@@ -1,15 +1,14 @@
-/* 1) Variables por defecto (modo claro) */
+
 
 :root {
   --bg-page: #ffffff;
   --text-page: #111111;
   --sidebar-bg: #111111;
-    /* valores por defecto (modo claro) */
   --bg-page: #fff;
   --pokemon-text: #1c1c1c;
   --pokemon-card-bg: #ffffff;
 }
-/* 2) Variables para modo oscuro: se activan cuando .dark está en <html> */
+
 .dark {
   --bg-page: #222;
   --text-page: #eaeaea;
@@ -22,11 +21,11 @@
 }
 
 
-/* Reset mínimo (mantén o añade si no lo tienes) */
+
 * {
   box-sizing: border-box;
 }
-/* globals.css — REEMPLAZA o AÑADE este bloque */
+
 html, body {
   margin: 0;
   padding: 0;
@@ -34,7 +33,7 @@ html, body {
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  background: var(--bg-page); /* <-- importante: fondo base dinámico */
+  background: var(--bg-page); 
   color: var(--text-page);
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
