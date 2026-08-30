@@ -334,6 +334,14 @@ h2{
 
 }
 
+@media (max-width: 400px){
+  #loginPassword{
+  margin: 0;
+  width: 88%;
+  transform: scaleX(1.05);
+}
+}
+
 .overlay {
   position: fixed;
   top: 0;
