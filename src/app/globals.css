@@ -271,9 +271,7 @@ h2{
   transition: transform 0.5s ease-in-out;
 }
 
-.form-container.login {
-  transform: translateX(0);
-}
+
 
 .form-container.register {
   transform: translateX(clamp(-300px, -75vw, -75vw));
@@ -290,6 +288,12 @@ h2{
   width: 88%;
   margin-right: 50px;
 }
+
+#loginPassword{
+  margin: 0;
+  width: 11.3rem;
+}
+
 .form button {
   width: 70%;
 }
@@ -390,6 +394,14 @@ h2{
   cursor: pointer;
   display: flex;
   align-items: center;
+}
+
+#toggle-r-password{
+  position: absolute;
+  right: 3rem;
+  cursor: pointer;
+  display: flex;
+  transform: translateY(-30px);
 }
 
 input[type="password"]::-ms-reveal,

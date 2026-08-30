@@ -141,7 +141,9 @@ export default function Page() {
 
       <div className="login-card">
         <div className={`form-container ${view}`}>
+
           {/* login */}
+
           <div className="form">
             <h2>Inicia sesión</h2>
            <div className="form-group">
@@ -199,7 +201,7 @@ export default function Page() {
             <div className="form-group">
               <input
                 id="registerPassword"
-                type="password"
+                type={showRegisterPassword ? "text" : "password"} 
                 placeholder="Contraseña"
                 value={registerPassword}
                 onChange={handlePasswordChange}
@@ -208,6 +210,7 @@ export default function Page() {
                 className={errors.password ? "input-error" : ""}
               />
               <span
+                id="toggle-r-password"
                 className="toggle-password"
                 onClick={() => setShowRegisterPassword(!showRegisterPassword)}
               >
@@ -232,7 +235,7 @@ export default function Page() {
             <div className="form-group">
               <input
                 id="registerConfirmPassword"
-                type="password"
+                type={showConfirmPassword ? "text" : "password"}
                 placeholder="Confirmar contraseña"
                 value={registerConfirmPassword}
                 onChange={handleConfirmPasswordChange}
@@ -246,6 +249,7 @@ export default function Page() {
                 
               />
                <span
+                id="toggle-r-password"
                 className="toggle-password"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
               >
